@@ -1,14 +1,7 @@
 package org.uade.ejercicio3;
 
-public abstract class MedioCombate implements IMedioCombate {
-
-    private MedioCombate modelo;
-
-    public MedioCombate() {
-        this.modelo = modelo;
-    }
-
+public abstract class MedioCombate implements IMedio {
     public int getPoderCombate() {
-        return modelo.getPoderCombate();
+        return (int) Math.round(this.getPoderTotal());
     }
 }

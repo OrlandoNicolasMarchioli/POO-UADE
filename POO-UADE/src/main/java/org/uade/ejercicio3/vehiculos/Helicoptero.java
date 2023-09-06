@@ -2,24 +2,23 @@ package org.uade.ejercicio3.vehiculos;
 
 import org.uade.ejercicio3.MedioCombate;
 
-public class Helicoptero extends MedioCombate {
+public class Helicoptero extends Vehiculo {
 
-    private int cantidadCombustible;
-    private int poderCombate;
+    private double cantidadCombustible;
+    private double poderCombate;
 
-    public Helicoptero(int cantidadCombustible) {
-        super();
+    public Helicoptero(double cantidadCombustible) {
+        super(cantidadCombustible);
         this.poderCombate = 8 * cantidadCombustible + 50;
+        this.cantidadCombustible = cantidadCombustible;
     }
 
     @Override
-    public int getPoderTotal() {
-        return 0;
+    public double getPoderTotal() {
+        return poderCombate;
     }
-
-    @Override
-    public int setPoderCombate(String modelo) {
-        return 0;
+    public double getCantidadDeCombustible() {
+        return cantidadCombustible;
     }
 }
 

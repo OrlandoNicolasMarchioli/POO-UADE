@@ -2,7 +2,7 @@ package org.uade.ejercicio3.soldados;
 
 import org.uade.ejercicio3.MedioCombate;
 
-public class Comando extends MedioCombate implements ISoldado {
+public class Comando extends Paracaidista {
 
     private final int poderDeCombate = 3;
     @Override
@@ -14,19 +14,14 @@ public class Comando extends MedioCombate implements ISoldado {
     public void saltar() {
         System.out.println("Salta de un avión");;
     }
-
-    @Override
     public void emboscar() {
         System.out.println("Hace una emboscada");;
     }
 
     @Override
-    public int getPoderTotal() {
+    public double getPoderTotal() {
         return 0;
     }
 
-    @Override
-    public int setPoderCombate(String modelo) {
-        return 0;
-    }
+
 }
