@@ -1,0 +1,26 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+Cliente -> Hotel: Ingreso cliente
+Hotel --> Cliente: Cliente ingresado
+
+Cliente -> Hotel: Consulta precios
+Hotel -> Habitacion: Consulta precios
+Habitacion --> Hotel: Devuelve precios
+Hotel --> Cliente: Muestra precios
+
+Cliente -> Hotel: GeneraReserva
+Hotel -> Reserva: GeneraReserva
+Reserva --> Hotel: Estado reserva
+alt successful case
+
+    Hotel -> Cliente: Reserva aceptada
+
+else Reserva anulada
+
+   Hotel -> Cliente: Reserva rechazada, habitacion ocupada
+
+end
+
+@enduml
