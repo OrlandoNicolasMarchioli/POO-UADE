@@ -1,0 +1,140 @@
+@startuml
+    Habitacion <|-- Matrimonial
+    Habitacion <|-- Simple
+    Habitacion <|-- Doble
+    Hotel "1" *-- "many" Habitacion : contains
+    Hotel "1" *-- "many" Reserva : contains
+    Hotel "1" *-- "many" Cliente : contains
+
+    class Hotel {
+            - reservas: Reserva[]
+            - habitaciones: Habitacion[]
+            - clientes: Cliente[]
+            + Hotel(reservas: Reserva[], habitaciones: Habitacion[], clientes: Cliente[])
+            + verHabitacionesDisponiblesPorTipo(tipo: String, fechaComienzo: Date, cantidadDias: int): List<Habitacion>
+            + verPrecioHabitacionesPorTipo(): void
+            + consultarDescuentosGenerales(cantidadDeDias: int): double
+            + consultarImporteReserva(reserva: Reserva): double
+            + cambiarEstadoReserva(reserva: Reserva, nuevoEstado: EstadoReserva): void
+            + agregarReserva(cliente: Cliente, habitacion: Habitacion, fechaComienzo: Date, cantidadDias: int, importeTotal: double, sena: double): void
+            + calcularImporteReserva(habitacion: Habitacion, cantidadDias: int): double
+            + esHabitacionDisponible(habitacion: Habitacion, fechaComienzo: Date, cantidadDias: int): boolean
+    }
+
+
+        class Reserva {
+            - idReserva: int
+            - cliente: Cliente
+            - habitacion: Habitacion
+            - fechaComienzo: Date
+            - cantidadDias: int
+            - importeTotal: double
+            - sena: double
+            - estadoReserva: EstadoReserva
+            + Reserva(cliente: Cliente, habitacion: Habitacion, fechaComienzo: Date, cantidadDias: int, importeTotal: double, sena: double)
+            + Reserva(cliente: Cliente, habitacion: Habitacion, fechaComienzo: Date, cantidadDias: int, importeTotal: double)
+            + getCliente(): Cliente
+            + setCliente(cliente: Cliente): void
+            + getHabitacion(): Habitacion
+            + getEstadoReserva(): EstadoReserva
+            + setHabitacion(habitacion: Habitacion): void
+            + setEstadoReserva(estadoReserva: EstadoReserva): void
+            + getFechaComienzo(): Date
+            + setFechaComienzo(fechaComienzo: Date): void
+            + getCantidadDias(): int
+            + setCantidadDias(cantidadDias: int): void
+            + getImporteTotal(): double
+            + setImporteTotal(importeTotal: double): void
+            + getSena(): double
+            + setSena(sena: double): void
+            + static generarReserva(cliente: Cliente, habitacion: Habitacion, fechaComienzo: Date, cantidadDias: int, importeTotal: double, sena: double): Reserva
+            + static generarReserva(cliente: Cliente, habitacion: Habitacion, fechaComienzo: Date, cantidadDias: int, importeTotal: double): Reserva
+            + static cambiarEstadoDeReserva(reserva: Reserva, nuevoEstado: EstadoReserva): void
+            + static cancelarReserva(cliente: Cliente, fechaComienzo: Date, reserva: Reserva): void
+            + static crearReserva(cliente: Cliente, habitacion: Habitacion, fechaComienzo: Date, cantidadDias: int, importeTotal: double, sena: double): Reserva
+        }
+
+
+
+        abstract class Habitacion {
+            - numero: int
+            - piso: int
+            - nombre: String
+            - precio: double
+            - estado: Estado
+            + Habitacion(precio: double, nombre: String)
+            + getEstado(): Estado
+            + getPrecio(): double
+            + getNumero(): int
+            + getPiso(): int
+            + getNombre(): String
+            + setNumero(numero: int): void
+            + setPiso(piso: int): void
+            + setNombre(nombre: String): void
+            + setPrecio(precio: double): void
+            + setPrecio(precio: PrecioHabitacion): void
+            + setEstado(estado: Estado): void
+        }
+
+        class Doble {
+            + Doble()
+        }
+
+        class Matrimonial {
+            + Matrimonial()
+        }
+
+        class Simple {
+            + Simple()
+        }
+
+
+
+        class Cliente {
+            - id: int
+            - nombre: String
+            - apellido: String
+            - tipo: TipoCliente
+            - reservas: Reserva[]
+            + Cliente(id: int, nombre: String, apellido: String, tipo: TipoCliente)
+            + getId(): int
+            + getReservas(): Reserva[]
+            + getApellido(): String
+            + getTipo(): TipoCliente
+            + setApellido(apellido: String): void
+            + setNombre(nombre: String): void
+            + setReservas(reservas: Reserva[]): void
+            + setTipo(tipo: TipoCliente): void
+        }
+
+    enum Descuento {
+        UnaSemana(0.1),
+        QuinceDias(0.2),
+        UnMes(0.3)
+    }
+
+    enum Estado {
+        Disponible,
+        Reservada
+    }
+
+    enum EstadoReserva {
+        Activa,
+        Tomada,
+        Cumplida,
+        Senada,
+        Vencida,
+        Cancelada
+    }
+
+    enum PrecioHabitacion {
+        PrecioSimple(500),
+        PrecioDoble(100000),
+        PrecioMatrimonial(1500)
+    }
+
+    enum TipoCliente {
+        Habitual,
+        Esporadico
+    }
+@enduml
