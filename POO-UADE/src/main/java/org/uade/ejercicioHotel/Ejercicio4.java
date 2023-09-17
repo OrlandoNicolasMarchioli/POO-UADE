@@ -1,21 +1,21 @@
-package org.uade.ejercicio4;
+package org.uade.ejercicioHotel;
 
-import org.uade.ejercicio4.clientes.Cliente;
-import org.uade.ejercicio4.enums.Estado;
-import org.uade.ejercicio4.enums.EstadoReserva;
-import org.uade.ejercicio4.habitaciones.Habitacion;
-import org.uade.ejercicio4.Reservas.Reserva;
-import org.uade.ejercicio4.enums.TipoCliente;
-import org.uade.ejercicio4.habitaciones.Doble;
-import org.uade.ejercicio4.habitaciones.Matrimonial;
-import org.uade.ejercicio4.habitaciones.Simple;
-import org.uade.ejercicio4.hotel.Hotel;
+import org.uade.ejercicioHotel.clientes.Cliente;
+import org.uade.ejercicioHotel.enums.Estado;
+import org.uade.ejercicioHotel.enums.EstadoReserva;
+import org.uade.ejercicioHotel.habitaciones.Habitacion;
+import org.uade.ejercicioHotel.Reservas.Reserva;
+import org.uade.ejercicioHotel.enums.TipoCliente;
+import org.uade.ejercicioHotel.habitaciones.Doble;
+import org.uade.ejercicioHotel.habitaciones.Matrimonial;
+import org.uade.ejercicioHotel.habitaciones.Simple;
+import org.uade.ejercicioHotel.hotel.Hotel;
 
 import java.util.Date;
 import java.util.Random;
 
-import static org.uade.ejercicio4.Reservas.Reserva.generarReserva;
-import static org.uade.ejercicio4.hotel.Hotel.calcularImporteReserva;
+import static org.uade.ejercicioHotel.Reservas.Reserva.generarReserva;
+import static org.uade.ejercicioHotel.hotel.Hotel.calcularImporteReserva;
 
 public class Ejercicio4 {
 

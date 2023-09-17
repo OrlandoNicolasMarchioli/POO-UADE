@@ -3,16 +3,26 @@
 
 autonumber
 Cliente -> Hotel: Ingreso cliente
+activate Hotel
 Hotel --> Cliente: Cliente ingresado
-
+deactivate Hotel
 Cliente -> Hotel: Consulta precios
+activate Cliente
 Hotel -> Habitacion: Consulta precios
+activate Habitacion
+activate Hotel
 Habitacion --> Hotel: Devuelve precios
+deactivate Habitacion
 Hotel --> Cliente: Muestra precios
-
+deactivate Hotel
+deactivate Cliente
 Cliente -> Hotel: GeneraReserva
+activate Cliente
 Hotel -> Reserva: GeneraReserva
+activate Hotel
+activate Reserva
 Reserva --> Hotel: Estado reserva
+deactivate Reserva
 alt successful case
 
     Hotel -> Cliente: Reserva aceptada
@@ -22,5 +32,7 @@ else Reserva anulada
    Hotel -> Cliente: Reserva rechazada, habitacion ocupada
 
 end
+
+deactivate Cliente
 
 @enduml

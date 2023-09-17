@@ -1,4 +1,4 @@
-package org.uade.ejercicio4.enums;
+package org.uade.ejercicioHotel.enums;
 
 public enum Estado {
     Disponible,Reservada

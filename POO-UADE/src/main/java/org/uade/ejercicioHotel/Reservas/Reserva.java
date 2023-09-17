@@ -1,15 +1,11 @@
-package org.uade.ejercicio4.Reservas;
+package org.uade.ejercicioHotel.Reservas;
 
-import org.uade.ejercicio4.clientes.Cliente;
-import org.uade.ejercicio4.enums.Estado;
-import org.uade.ejercicio4.enums.EstadoReserva;
-import org.uade.ejercicio4.enums.TipoCliente;
-import org.uade.ejercicio4.habitaciones.Doble;
-import org.uade.ejercicio4.habitaciones.Habitacion;
-import org.uade.ejercicio4.habitaciones.Matrimonial;
-import org.uade.ejercicio4.habitaciones.Simple;
+import org.uade.ejercicioHotel.clientes.Cliente;
+import org.uade.ejercicioHotel.enums.Estado;
+import org.uade.ejercicioHotel.enums.EstadoReserva;
+import org.uade.ejercicioHotel.enums.TipoCliente;
+import org.uade.ejercicioHotel.habitaciones.Habitacion;
 
-import java.util.Arrays;
 import java.util.Date;
 import java.util.concurrent.atomic.AtomicInteger;
 

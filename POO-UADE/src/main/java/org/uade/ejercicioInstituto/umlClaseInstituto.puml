@@ -1,0 +1,122 @@
+@startuml
+
+class Instituto {
+    - CUPO_MAXIMO: int
+    - carreras: List<Carrera>
+    - profesores: List<Profesor>
+    - alumnos: List<Alumno>
+    - cursos: List<Curso>
+    + Instituto(carreras: List<Carrera>, profesores: List<Profesor>, alumnos: List<Alumno>, cursos: List<Curso>)
+    + inscribirAlumno(nombre: String, tipoDoducmento: String, numeroDocumento: int): void
+    + inscribirProfesor(nombre: String, disponibilidad: Map<String, List<Turno>>, materiasDictadas: List<Materia>): void
+    + inscribirCarrera(descripcion: String, materias: List<Materia>): void
+    + imprimirListadoCurso(curso: Curso): void
+    + cursoExistente(materia: Materia, dia: String, turno: Turno): boolean
+    + generarCurso(nombreCurso: String, materia: Materia, profesor: Profesor, alumnos: List<Alumno>, carrera: Carrera, dia: String, turno: Turno): void
+    + inscribirAlumnoEnCurso(legajoAlumno: int, idCurso: int): void
+    + getAlumnoPorId(legajoAlumno: int): Alumno
+    + getCursoPorId(idCurso: int): Curso
+}
+
+class Carrera {
+    - codigo: int
+    - descripcion: String
+    - materias: List<Materia>
+    + Carrera(descripcion: String, materias: List<Materia>)
+    + generarCarrera(descripcion: String, materias: List<Materia>): Carrera
+    + contieneMateria(materia: Materia): boolean
+}
+
+class Materia {
+    - codigo: int
+    - descripcion: String
+    + Materia(descripcion: String)
+    + getCodigo(): int
+    + getDescripcion(): String
+    + setDescripcion(descripcion: String): void
+}
+
+class Curso {
+    - codigo: int
+    - nombre: String
+    - materia: Materia
+    - profesor: Profesor
+    - alumnos: List<Alumno>
+    - carrera: Carrera
+    - dia: String
+    - turno: Turno
+    + Curso(nombre: String, materia: Materia, profesor: Profesor, alumnos: List<Alumno>, carrera: Carrera, dia: String, turno: Turno)
+    + nuevoCurso(nombre: String, materia: Materia, profesor: Profesor, alumnos: List<Alumno>, carrera: Carrera, dia: String, turno: Turno): Curso
+    + getCodigo(): int
+    + getNombre(): String
+    + getMateria(): Materia
+    + getProfesor(): Profesor
+    + getAlumnos(): List<Alumno>
+    + getCarrera(): Carrera
+    + getDia(): String
+    + getTurno(): Turno
+    + setAlumnos(alumnos: List<Alumno>): void
+    + setNombre(nombre: String): void
+    + setMateria(materia: Materia): void
+    + setProfesor(profesor: Profesor): void
+    + setCarrera(carrera: Carrera): void
+    + setDia(dia: String): void
+    + setTurno(turno: Turno): void
+}
+
+class Profesor {
+    - legajo: int
+    - nombre: String
+    - disponibilidad: Map<String, List<Turno>>
+    - materiasDictadas: List<Materia>
+    + Profesor(nombre: String, disponibilidad: Map<String, List<Turno>>, materiasDictadas: List<Materia>)
+    + Profesor(nombre: String, materiasDictadas: List<Materia>)
+    + estaDisponible(dia: String, turno: Turno): boolean
+    + asignarDisponibilidadAleatoria(): void
+    + agregarDisponibilidad(dia: String, turno: Turno): void
+    + nuevoProfesor(nombre: String, disponibilidad: Map<String, List<Turno>>, materiasDictadas: List<Materia>): Profesor
+    + nuevoProfesor(nombre: String, materiasDictadas: List<Materia>): Profesor
+    + getLegajo(): int
+    + getNombre(): String
+    + setDisponibilidad(disponibilidad: Map<String, List<Turno>>): void
+    + getDisponibilidad(): Map<String, List<Turno>>
+    + getMateriasDictadas(): List<Materia>
+}
+
+class Alumno {
+    - legajo: int
+    - nombre: String
+    - tipoDocumento: String
+    - numeroDeDocumento: int
+    - cursos: Curso[]
+    + Alumno(nombre: String, tipoDocumento: String, numeroDeDocumento: int)
+    + nuevoAlumno(nombre: String, tipoDocumento: String, numeroDocumento: int): Alumno
+    + getLegajo(): int
+    + getNombre(): String
+    + getTipoDocumento(): String
+    + getNumeroDeDocumento(): int
+    + getCursos(): Curso[]
+}
+
+enum Turno {
+    Manana
+    Tarde
+    Noche
+}
+
+Instituto --o Carrera : contiene >
+Instituto --o Profesor : contiene >
+Instituto --o Alumno : contiene >
+Instituto --o Curso : contiene >
+
+Curso --o Materia : tiene >
+Curso -- Profesor : tiene >
+Curso --o Alumno : pasee >
+Curso --o Carrera : tiene >
+
+Profesor --o Materia : dicta >
+Profesor --o Turno : está disponible en >
+
+Alumno --o Curso : inscrito en >
+
+@enduml

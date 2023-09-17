@@ -1,6 +1,5 @@
-package org.uade.ejercicio4.habitaciones;
-import org.uade.ejercicio4.enums.Estado;
-import org.uade.ejercicio4.enums.PrecioHabitacion;
+package org.uade.ejercicioHotel.habitaciones;
+import org.uade.ejercicioHotel.enums.Estado;
 
 public class Simple extends Habitacion{
 

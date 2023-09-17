@@ -1,7 +1,7 @@
-package org.uade.ejercicio4.clientes;
+package org.uade.ejercicioHotel.clientes;
 
-import org.uade.ejercicio4.Reservas.Reserva;
-import org.uade.ejercicio4.enums.TipoCliente;
+import org.uade.ejercicioHotel.Reservas.Reserva;
+import org.uade.ejercicioHotel.enums.TipoCliente;
 
 public class Cliente {
 

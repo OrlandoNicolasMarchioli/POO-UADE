@@ -1,7 +1,7 @@
-package org.uade.ejercicio4.habitaciones;
+package org.uade.ejercicioHotel.habitaciones;
 
-import org.uade.ejercicio4.enums.Estado;
-import org.uade.ejercicio4.enums.PrecioHabitacion;
+import org.uade.ejercicioHotel.enums.Estado;
+import org.uade.ejercicioHotel.enums.PrecioHabitacion;
 
 public abstract class Habitacion {
     private int numero;

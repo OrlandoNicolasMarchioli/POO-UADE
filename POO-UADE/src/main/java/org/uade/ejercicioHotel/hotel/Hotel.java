@@ -1,14 +1,14 @@
-package org.uade.ejercicio4.hotel;
+package org.uade.ejercicioHotel.hotel;
 
-import org.uade.ejercicio4.Reservas.Reserva;
-import org.uade.ejercicio4.clientes.Cliente;
-import org.uade.ejercicio4.enums.Descuento;
-import org.uade.ejercicio4.enums.Estado;
-import org.uade.ejercicio4.enums.EstadoReserva;
-import org.uade.ejercicio4.habitaciones.Doble;
-import org.uade.ejercicio4.habitaciones.Habitacion;
-import org.uade.ejercicio4.habitaciones.Matrimonial;
-import org.uade.ejercicio4.habitaciones.Simple;
+import org.uade.ejercicioHotel.Reservas.Reserva;
+import org.uade.ejercicioHotel.clientes.Cliente;
+import org.uade.ejercicioHotel.enums.Descuento;
+import org.uade.ejercicioHotel.enums.Estado;
+import org.uade.ejercicioHotel.enums.EstadoReserva;
+import org.uade.ejercicioHotel.habitaciones.Doble;
+import org.uade.ejercicioHotel.habitaciones.Habitacion;
+import org.uade.ejercicioHotel.habitaciones.Matrimonial;
+import org.uade.ejercicioHotel.habitaciones.Simple;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -16,7 +16,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static org.uade.ejercicio4.Reservas.Reserva.crearReserva;
+import static org.uade.ejercicioHotel.Reservas.Reserva.crearReserva;
 
 public class Hotel {
 

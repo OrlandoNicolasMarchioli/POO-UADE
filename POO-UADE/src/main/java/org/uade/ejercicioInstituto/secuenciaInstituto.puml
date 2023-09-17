@@ -1,0 +1,40 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+@startuml
+
+actor Administrador
+participant "Administrador" as Admin
+participant "Instituto" as Instituto
+participant "Curso" as Curso
+participant "Alumno" as Alumno
+
+activate Admin
+Admin -> Instituto:  inscribirAlumnoEnCurso(int legajoAlumno, int idCurso): void
+
+activate Instituto
+Instituto -> Alumno: getAlumnoPorId(int legajoAlumno): Alumno
+activate Alumno
+Alumno --> Instituto: Alumno
+deactivate Alumno
+Instituto -> Curso: getCursoPorId(int idCurso): Curso
+activate Curso
+Curso --> Instituto: Curso
+deactivate Curso
+deactivate Instituto
+alt successful case
+
+    Instituto -> Administrador: Confirmacion Inscripcion
+
+else Numero de identificacion invalido
+
+   Instituto -> Administrador: El curso o el profesor no existe
+
+else Curso sin cupo
+
+    Instituto -> Administrador: El curso no posee mas cupos
+
+end
+
+@enduml
+
